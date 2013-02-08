@@ -132,6 +132,8 @@ module GeoRedirect
         }
         url.query = URI.encode_www_form(query_hash)
         url.query = nil if url.query.empty?
+        # We don't want the old path hanging around
+        url.path = ''
 
         self.log "Redirecting to #{url}"
         [301,
